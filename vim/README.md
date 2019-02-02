@@ -16,5 +16,6 @@ Spell checking
 ==============
 
 
-
+    # For only applying the spell check in the current buffer
+    :setlocal spell spelllang=fr_FR
 
