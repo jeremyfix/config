@@ -5,11 +5,11 @@ Installation
 
 Go to : https://github.com/amix/vimrc
 
-git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
-sh ~/.vim_runtime/install_awesome_vimrc.sh
+    git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
+    sh ~/.vim_runtime/install_awesome_vimrc.sh
 
-git clone git@github.com:jeremyfix/config.git /tmp
-cp /tmp/config/vim/my_configs.vim ~/.vim_runtime/
+    git clone git@github.com:jeremyfix/config.git /tmp
+    cp /tmp/config/vim/my_configs.vim ~/.vim_runtime/
 
 
 The bindings listed below used the mappings from awesome vimrc
@@ -41,11 +41,18 @@ Load/save files
 - Set current working directory to the current buffer directory `,cd`
 - Open file brower `:E`
 
+Search/Replace
+==============
+
+- Select the region to search and `:s/previous/after/g` ;  this will display `:'<,'>s/previous/after/g`
+- search and replace in the whole buffer, in interactive mode `%s/previous/after/gc`
+- disable highligh for search `:noh`
+
 Indentation
 ===========
 
-- Indent all the buffer "ggvG="  : means go to begining, visual mode, go to end, indent
-- in visual mode '<<' or '>>' to indent left or right
+- Indent all the buffer `ggvG=`  : means go to begining, visual mode, go to end, indent
+- in visual mode `<<` or `>>` to indent left or right
 
 Buffers
 =======
