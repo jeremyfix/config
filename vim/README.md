@@ -15,6 +15,7 @@ Go to : https://github.com/amix/vimrc
 Spell checking
 ==============
 
+see https://www.admin-linux.fr/activer-le-correcteur-orthographique-sous-vim/
 
     # For only applying the spell check in the current buffer
     :setlocal spell spelllang=fr_FR
