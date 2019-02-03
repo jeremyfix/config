@@ -14,6 +14,11 @@ Go to : https://github.com/amix/vimrc
 
 The bindings listed below used the mappings from awesome vimrc
 
+Help me ?!
+==========
+
+To get help on commands `:help <commands>`, try for example `:help v_i`, `:help gq`, `:help gcf`
+
 Spell checking
 ==============
 
@@ -54,11 +59,19 @@ Indentation
 - Indent all the buffer `ggvG=`  : means go to begining, visual mode, go to end, indent
 - in visual mode `<<` or `>>` to indent left or right
 
+Commenting
+==========
+
+Based on [commentary.vim](https://github.com/tpope/vim-commentary)
+
+- `gcc` to comment line ,  `gc` to comment selection in visual mode, `gcap` for commenting paragraph (`ap` selects the paragraph)
+- `gcu` to uncomment 
+
 Buffers
 =======
 
 - Save current buffer `,w`
-- List opened buffers `,o` (this will open [bufexplorer](https://github.com/vim-scripts/bufexplorer.zip) )
+- List opened buffers `,o` (this will open [bufexplorer](https://github.com/vim-scripts/bufexplorer.zip) ), other commands are provided by bufexplorer
 - Kill opened buffer `:bd`
 
 
