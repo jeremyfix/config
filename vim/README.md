@@ -17,7 +17,7 @@ The bindings listed below used the mappings from awesome vimrc
 Help me ?!
 ==========
 
-To get help on commands `:help <commands>`, try for example `:help v_i`, `:help gq`, `:help gcf`
+To get help on commands `:help <commands>`, try for example `:help v_i`, `:help gq`, `:help gf`
 
 Spell checking
 ==============
@@ -73,5 +73,6 @@ Buffers
 - Save current buffer `,w`
 - List opened buffers `,o` (this will open [bufexplorer](https://github.com/vim-scripts/bufexplorer.zip) ), [other commands](https://github.com/vim-scripts/bufexplorer.zip/blob/master/doc/bufexplorer.txt) are provided by bufexplorer
 - Kill opened buffer `:bd`
+- Open buffer in new window `,bv` (vert split), `,bs` (horiz split) 
 
 
