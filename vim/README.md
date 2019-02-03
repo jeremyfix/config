@@ -58,7 +58,7 @@ Buffers
 =======
 
 - Save current buffer `,w`
-- List opened buffers `,o`
+- List opened buffers `,o` (this will open [bufexplorer](https://github.com/vim-scripts/bufexplorer.zip) )
 - Kill opened buffer `:bd`
 
 
