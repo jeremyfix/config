@@ -1,5 +1,10 @@
 A summary/cheat sheet of the shortcuts I use for VIM
 
+Things I should investigate 
+===========================
+
+- copy/paste with middle button click is cumbersome , see https://stackoverflow.com/questions/2514445/turning-off-auto-indent-when-pasting-text-into-vim . There is something [here](https://stackoverflow.com/questions/2514445/turning-off-auto-indent-when-pasting-text-into-vim/38258720#38258720) which refers to auto enabling paste mode when pasting
+
 Installation
 ============
 
