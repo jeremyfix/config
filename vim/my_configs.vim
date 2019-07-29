@@ -21,7 +21,11 @@ au BufNewFile,BufRead *.py
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
-    \ set textwidth=79 |
     \ set expandtab |
     \ set autoindent |
     \ set fileformat=unix |
+
+nnoremap    <leader>st :<C-U>setlocal lcs=tab:►-,trail:●,eol:¬ list! list? <CR>
+
+" To get colored buffer when opening a Roslaunch file
+autocmd BufRead *.launch set filetype=xml
