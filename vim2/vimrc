@@ -1,0 +1,369 @@
+set encoding=UTF-8
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" Vundle ------------------------------------------------------------------ {{{
+
+" set the runtime path to include vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+" Vundle plugin list section
+" Each time a plugin is added to the list below
+" You need to run  :PluginInstall within vim
+call vundle#begin()
+
+" let vundle manage vundle, required
+Plugin 'vundlevim/vundle.vim'
+"
+" Python code folding for vim
+" Fold open with zo
+" Fold close with zc
+Plugin 'tmhedberg/simpylfold'
+
+" [Python] Handles indentation with parenthesis
+" while/for, ... as defined in PEP8
+Plugin 'vim-scripts/indentpython.vim'
+
+" Syntax checker through external tools
+Plugin 'vim-syntastic/syntastic'
+
+" Plugin that runs Flake8 on the currently opened file with <F7>
+Plugin 'nvie/vim-flake8'
+
+" Buffer explorer
+Plugin 'jlanzarotta/bufexplorer'
+
+" Easy comment block/line, ... with gcc  gcgc, ...
+Plugin 'tpope/vim-commentary'
+
+" [C/C++]  
+" Quickly switch between header/source files
+Plugin 'vim-scripts/a.vim'
+
+" [Git]    
+" Allow to invoke Git within VIM
+Plugin 'tpope/vim-fugitive'
+
+" Add/Remove brackets in pairs
+Plugin 'jiangmiao/auto-pairs'
+
+" [Latex]
+" See the doc with   :help latex-suite
+Plugin 'vim-latex/vim-latex'
+
+" System file explorer
+Plugin 'scrooloose/nerdtree'
+Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+
+" [Latex]
+" previewer, run :LLPStartPreview
+Plugin 'xuhdev/vim-latex-live-preview'
+
+" [Completion]
+Plugin 'ycm-core/YouCompleteMe'
+
+" Snippets
+Plugin 'sirver/ultisnips'
+Plugin 'honza/vim-snippets'
+
+" Plugin 'ctrlpvim/ctrlp.vim'
+" The peaksea color scheme
+Bundle 'peaksea'
+
+"all of your plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" --------------------------------------------------------------------------}}}
+
+" Mappings ---------------------------------------------------------------- {{{
+
+" The leader globally used
+let mapleader = ","
+
+" The leader used locally depending on the filemode
+let maplocalleader = "\\"
+
+" Easily set the working directory to the file
+" currently edited
+map <leader>cd :cd %:p:h<cr>:pwd<cr>
+
+" Explores the buffer
+map <leader>o :BufExplorer<cr>
+
+" Save the current buffer
+map <leader>w :w!<cr>
+
+"""""""""""""""""""" vimrc  """"""""""""""""""
+"Editing and sourcing ~/.vimrc
+nnoremap <leader>ev :vsplit $MYVIMRC<CR>12G$
+nnoremap <leader>sv :source $MYVIMRC<CR>
+
+" Enable folding with the spacebar
+nnoremap <space> za
+nnoremap <leader>rf :set foldlevel=1<CR>
+nnoremap <leader>uf :set foldlevel=2<CR>
+
+" To insert double quotes around the selected words
+" in visual mode
+vnoremap <leader>q `><esc>i"<esc>v`<<esc>i"<esc>v
+
+" Enters introdudes a blank line 
+nnoremap <enter> o<esc>
+
+" Switchs to upper case the word under the cursor
+inoremap <c-u> <esc>veU<esc>ea
+noremap <c-u> veU<esc>
+
+" <Ctrl-k> deletes the current line in insert mode
+inoremap <c-k> <esc>ddi
+
+"""""""""""""""""""" Navigation  """"""""""""""""""
+"Capital h for moving to the beginning of a line
+nnoremap H 0
+"Capital L for moving to the end of a line
+nnoremap L $
+"Move to the window below  
+nnoremap <C-J> <C-W><C-J>
+"Move to the window above
+nnoremap <C-K> <C-W><C-K>
+"Move to the window on the right
+nnoremap <C-L> <C-W><C-L>
+"Move to the window on the left
+nnoremap <C-H> <C-W><C-H> 
+
+" nnoremap <leader>n :NERDTreeTabsToggle<CR>
+"-------------------------------------------------------------------------- }}}
+
+" Snippets ---------------------------------------------------------------- {{{
+"Ultisnips
+let g:tex_flavor='latex'
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<C-e>"
+let g:UltiSnipsJumpForwardTrigger="<C-e>"
+let g:UltiSnipsJumpBackwardTrigger="<C-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+" ------------------------------------------------------------------------- }}}
+
+" Filename completion ----------------------------------------------------- {{{
+" For completing filenames with the longest common part
+" and displaying a list of possibilities if any
+:set wildmode=longest:list,full
+:set wildmenu
+" -------------------------------------------------------------------------}}}
+
+" Folding SimpylFold ------------------------------------------------------ {{{
+" Keeping the docstring within the fold
+let g:SimpylFold_docstring_preview=1
+
+" Function to enlarge the column showing the folding depth
+nnoremap <leader>f :call FoldColumnToggle()<cr>
+function! FoldColumnToggle()
+    if &foldcolumn
+        setlocal foldcolumn=0
+    else
+        setlocal foldcolumn=4
+    endif
+endfunction
+" ------------------------------------------------------------------------- }}}
+
+" NERDTree ---------------------------------------------------------------- {{{
+
+" Display the NERDTree on the right side
+let g:NERDTreeWinPos = "right"
+
+" NERDTree File highlighting
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+ exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+ exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+endfunction
+
+call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
+call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
+call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
+call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
+call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
+
+" vim-nerdtree-syntax-highlight
+let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeExactMatchHighlightFullName = 1
+let g:NERDTreePatternMatchHighlightFullName = 1
+
+" Load at vim startup
+autocmd vimenter * NERDTree 
+" Closes VIM if the only remaining window is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" Automatically load NERDTree if no file is provided
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+let g:NERDTreeLimitedSyntax = 1
+
+" Do not display temporary files into NERDTree
+let NERDTreeIgnore=['\.o$', '\.pyc', '\~$']
+" -------------------------------------------------------------------------}}}
+
+" Status Line ------------------------------------------------------------- {{{
+" Always show the status line
+set laststatus=2
+" Customize the content of the statusline
+set statusline=%<\ %{mode()}\ \|\ %F%=\ %{&fileformat}\ \|\ %{&fileencoding}\ \|\ %{&filetype}\ \|\ %p%%\ \|\ LN\ %l:%c\  
+
+" ------------------------------------------------------------------------- }}}
+
+" Syntastic --------------------------------------------------------------- {{{
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_checkers = ['flake8']
+
+" Statusline
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+" ------------------------------------------------------------------------- }}}
+
+" Syntax highlighting ----------------------------------------------------- {{{
+
+" Function to show the hidden spaces, linebreaks, etc...
+nnoremap    <leader>st :<C-U>setlocal lcs=tab:►-,trail:●,eol:¬ list! list?<CR>
+" Color syntaxing
+autocmd BufRead,BufNewFile *.py let python_highlight_all=1
+" Enable syntax highlighting 
+syntax enable
+" ------------------------------------------------------------------------- }}}
+
+" Basic VIMsettings ------------------------------------------------------- {{{
+" Show line number
+set number
+set tabstop=4
+set shiftwidth=4
+" Highlight matching parenthesis
+set showmatch
+" Highlight the search
+set hlsearch
+" Highlight the text matching the search
+set incsearch
+" Let some space around the cursor to see the context
+set scrolloff=20
+"-------------------------------------------------------------------------- }}}
+
+"" YouCompleteMe ---------------------------------------------------------- {{{
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" let g:ycm_global_ycm_extra_conf = '.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+"-------------------------------------------------------------------------- }}}
+
+"""automatic grep -------{{{
+"nnoremap <leader>g :set operatorfunc=GrepOperator<cr>g@
+"vnoremap <leader>g :<c-u>call GrepOperator(visualmode())<cr>
+
+"function! GrepOperator(type)
+"    if a:type ==# 'v'
+"        normal! `<v`>y
+"    elseif a:type ==# 'char'
+"        normal! `[v`]y
+"    else
+"        return
+"    endif
+
+"    silent execute "grep! -R " . shellescape(@@) . " ."
+"    copen
+"endfunction
+""----}}}
+
+" File settings ----------------------------------------------------------- {{{
+
+" XML file settings ------------------- {{{
+" For ROS and Qt,
+augroup filetype_xml
+    autocmd!
+	autocmd BufNewFile,BufRead *.launch,*.ui set filetype=xml
+augroup END
+" }}}
+
+" Python file settings ---------------------- {{{
+augroup filetype_python
+    autocmd!
+	" Enable folding
+	au BufNewFile,BufRead *.py set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=120 expandtab autoindent fileformat=unix foldlevel=1
+    autocmd FileType python nnoremap <leader>r :!python3 %<CR>
+augroup END
+" }}}
+
+" Vimscript file settings ---------------------- {{{
+augroup filetype_vim
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker | setlocal foldlevel=0 
+augroup END
+" }}}
+
+" Markdown file settings ---------------------- {{{
+augroup filetype_md
+    autocmd!
+	autocmd FileType markdown noremap <leader>l :w<bar>!pandoc -so $(echo % \| sed 's/md$/pdf/') % <CR><CR>:!pkill -HUP mupdf<CR><CR>
+	autocmd FileType markdown noremap <leader>s :!mupdf $(echo % \| sed 's/md$/pdf/') & disown<CR><CR>
+augroup END
+" }}}
+
+"" LateX file settings ---------------------- {{{
+"augroup filetype_latex
+"	autocmd!
+"    autocmd FileType tex nnoremap <leader>l :w<bar>!xelatex -shell-escape % <CR><CR>:!pkill -HUP mupdf<CR><CR>
+"	autocmd FileType tex nnoremap <leader>f :call FoldColumnToggle()<cr>
+"	"autocmd FileType tex nnoremap <leader>s :!mupdf $(echo % \| sed 's/tex$/pdf/') & disown<CR><CR>
+"	autocmd FileType tex nnoremap <leader>s :!gnome-open $(echo % \| sed 's/tex$/pdf/') & disown<CR><CR>
+"augroup END
+"" }}}
+
+"" reStructuredText file settings ---------------- {{{
+"augroup filetype_rst
+"	au BufNewFile,BufRead *.rst nnoremap <leader>dr :!rosdoc_lite .<CR>
+"augroup END
+"" }}}
+
+"-------------------------------------------------------------------------- }}}
+
+" Color settings ---------------------------------------------------------- {{{
+
+" Black background
+set background=dark
+" The colorscheme
+colorscheme peaksea
+" Show a vertical column at 80 width
+set colorcolumn=80
+" Get a red bg, white font for searches
+hi IncSearch term=reverse ctermbg=1 ctermfg=15
+hi Search term=reverse ctermbg=1 ctermfg=15
+" Set white font color, yellow bg color for folded lines
+hi Folded ctermbg=3 ctermfg=0 
+" Remove the background color from the leftmost 1char column
+hi SignColumn ctermbg=None
+
+"-------------------------------------------------------------------------- }}}
+
+" Quickfix ---------------------------------------------------------------- {{{
+" Function to show/hide the quickfix window
+nnoremap <leader>q :call QuickfixToggle()<cr>
+let g:quickfix_is_open = 0
+function! QuickfixToggle()
+    if g:quickfix_is_open
+        cclose
+        let g:quickfix_is_open = 0
+        execute g:quickfix_return_to_window . "wincmd w"
+    else
+        let g:quickfix_return_to_window = winnr()
+        copen
+        let g:quickfix_is_open = 1
+    endif
+endfunction
+"-------------------------------------------------------------------------- }}}
