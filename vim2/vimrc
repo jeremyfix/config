@@ -48,7 +48,8 @@ Plugin 'jiangmiao/auto-pairs'
 
 " [Latex]
 " See the doc with   :help latex-suite
-Plugin 'vim-latex/vim-latex'
+Plugin 'lervag/vimtex'
+" Plugin 'vim-latex/vim-latex'
 
 " System file explorer
 Plugin 'scrooloose/nerdtree'
@@ -56,7 +57,7 @@ Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " [Latex]
 " previewer, run :LLPStartPreview
-Plugin 'xuhdev/vim-latex-live-preview'
+" Plugin 'xuhdev/vim-latex-live-preview'
 
 " [Completion]
 Plugin 'ycm-core/YouCompleteMe'
@@ -144,6 +145,15 @@ let g:UltiSnipsJumpBackwardTrigger="<C-z>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 " ------------------------------------------------------------------------- }}}
+
+" Help navigation --------------------------------------------------------- {{{
+autocmd FileType help nnoremap <buffer> <CR> <C-]>
+autocmd FileType help nnoremap <buffer> <BS> <C-T>
+autocmd FileType help nnoremap <buffer> o /'\l\{2,\}'<CR>
+autocmd FileType help nnoremap <buffer> O ?'\l\{2,\}'<CR>
+autocmd FileType help nnoremap <buffer> s /\|\zs\S\+\ze\|<CR>
+autocmd FileType help nnoremap <buffer> S ?\|\zs\S\+\ze\|<CR>
+" -------------------------------------------------------------------------}}}
 
 " Filename completion ----------------------------------------------------- {{{
 " For completing filenames with the longest common part
@@ -262,9 +272,9 @@ let g:updatetime=1000
 "-------------------------------------------------------------------------- }}}
 
 "" Latex ------------------------------------------------------------------ {{{
-let g:Tex_CompileRule_pdf = 'latexmk $*'
+" let g:Tex_CompileRule_pdf = 'latexmk $*'
 " let g:livepreview_previewer = 'mupdf'
-let g:livepreview_engine = 'latexmk -pdf '
+" let g:livepreview_engine = 'latexmk -pdf '
 "-------------------------------------------------------------------------- }}}
 
 "" YouCompleteMe ---------------------------------------------------------- {{{
