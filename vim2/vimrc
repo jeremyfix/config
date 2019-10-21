@@ -255,6 +255,16 @@ set hlsearch
 set incsearch
 " Let some space around the cursor to see the context
 set scrolloff=20
+
+" Write the swap file to disk
+" frequently enough; This is usefull for Latex live preview for example
+let g:updatetime=1000
+"-------------------------------------------------------------------------- }}}
+
+"" Latex ------------------------------------------------------------------ {{{
+let g:Tex_CompileRule_pdf = 'latexmk $*'
+" let g:livepreview_previewer = 'mupdf'
+let g:livepreview_engine = 'latexmk -pdf '
 "-------------------------------------------------------------------------- }}}
 
 "" YouCompleteMe ---------------------------------------------------------- {{{
@@ -315,15 +325,15 @@ augroup filetype_md
 augroup END
 " }}}
 
-"" LateX file settings ---------------------- {{{
-"augroup filetype_latex
-"	autocmd!
-"    autocmd FileType tex nnoremap <leader>l :w<bar>!xelatex -shell-escape % <CR><CR>:!pkill -HUP mupdf<CR><CR>
-"	autocmd FileType tex nnoremap <leader>f :call FoldColumnToggle()<cr>
-"	"autocmd FileType tex nnoremap <leader>s :!mupdf $(echo % \| sed 's/tex$/pdf/') & disown<CR><CR>
-"	autocmd FileType tex nnoremap <leader>s :!gnome-open $(echo % \| sed 's/tex$/pdf/') & disown<CR><CR>
-"augroup END
-"" }}}
+" LateX file settings ---------------------- {{{
+augroup filetype_latex
+	autocmd!
+    autocmd FileType tex nnoremap <leader>l :w<bar>!xelatex -shell-escape % <CR><CR>:!pkill -HUP mupdf<CR><CR>
+	autocmd FileType tex nnoremap <leader>f :call FoldColumnToggle()<cr>
+	autocmd FileType tex nnoremap <leader>s :!mupdf $(echo % \| sed 's/tex$/pdf/') & disown<CR><CR>
+	autocmd FileType tex nnoremap <leader>s :!gnome-open $(echo % \| sed 's/tex$/pdf/') & disown<CR><CR>
+augroup END
+" }}}
 
 "" reStructuredText file settings ---------------- {{{
 "augroup filetype_rst
