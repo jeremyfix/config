@@ -288,6 +288,8 @@ set incsearch
 set scrolloff=20
 " 
 set backspace=indent,eol,start 
+" Reload a file if changed on disk
+set autoread
 
 " Write the swap file to disk
 " frequently enough; This is usefull for Latex live preview for example
