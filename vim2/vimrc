@@ -112,7 +112,7 @@ nnoremap <leader>uf :set foldlevel=2<CR>
 vnoremap <leader>q `><esc>i"<esc>v`<<esc>i"<esc>v
 
 " Enters introdudes a blank line 
-nnoremap <enter> o<esc>
+" nnoremap <enter> o<esc>
 
 " Switchs to upper case the word under the cursor
 inoremap <c-u> <esc>veU<esc>ea
@@ -134,6 +134,14 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 "Move to the window on the left
 nnoremap <C-H> <C-W><C-H> 
+
+" Prefix the vertical navigation with g
+" to navigate vertically within a line
+nnoremap k gk
+nnoremap j gj
+
+vnoremap k gk
+vnoremap j gj
 
 " nnoremap <leader>n :NERDTreeTabsToggle<CR>
 "-------------------------------------------------------------------------- }}}
@@ -182,11 +190,11 @@ let g:SimpylFold_docstring_preview=1
 " Function to enlarge the column showing the folding depth
 nnoremap <leader>f :call FoldColumnToggle()<cr>
 function! FoldColumnToggle()
-    if &foldcolumn
-        setlocal foldcolumn=0
-    else
-        setlocal foldcolumn=4
-    endif
+	if &foldcolumn
+		setlocal foldcolumn=0
+	else
+		setlocal foldcolumn=4
+	endif
 endfunction
 " ------------------------------------------------------------------------- }}}
 
@@ -197,8 +205,8 @@ let g:NERDTreeWinPos = "right"
 
 " NERDTree File highlighting
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
- exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
- exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+	exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+	exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
 
 call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
@@ -322,30 +330,30 @@ map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " XML file settings ------------------- {{{
 " For ROS and Qt,
 augroup filetype_xml
-    autocmd!
+	autocmd!
 	autocmd BufNewFile,BufRead *.launch,*.ui set filetype=xml
 augroup END
 " }}}
 
 " Python file settings ---------------------- {{{
 augroup filetype_python
-    autocmd!
+	autocmd!
 	" Enable folding
 	au BufNewFile,BufRead *.py set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=120 expandtab autoindent fileformat=unix foldlevel=1
-    autocmd FileType python nnoremap <leader>r :!python3 %<CR>
+	autocmd FileType python nnoremap <leader>r :!python3 %<CR>
 augroup END
 " }}}
 
 " Vimscript file settings ---------------------- {{{
 augroup filetype_vim
-    autocmd!
-    autocmd FileType vim setlocal foldmethod=marker | setlocal foldlevel=0 
+	autocmd!
+	autocmd FileType vim setlocal foldmethod=marker | setlocal foldlevel=0 
 augroup END
 " }}}
 
 " Markdown file settings ---------------------- {{{
 augroup filetype_md
-    autocmd!
+	autocmd!
 	autocmd FileType markdown noremap <leader>l :w<bar>!pandoc -so $(echo % \| sed 's/md$/pdf/') % <CR><CR>:!pkill -HUP mupdf<CR><CR>
 	autocmd FileType markdown noremap <leader>s :!mupdf $(echo % \| sed 's/md$/pdf/') & disown<CR><CR>
 augroup END
@@ -354,7 +362,7 @@ augroup END
 " LateX file settings ---------------------- {{{
 augroup filetype_latex
 	autocmd!
-    autocmd FileType tex nnoremap <leader>l :w<bar>!xelatex -shell-escape % <CR><CR>:!pkill -HUP mupdf<CR><CR>
+	autocmd FileType tex nnoremap <leader>l :w<bar>!xelatex -shell-escape % <CR><CR>:!pkill -HUP mupdf<CR><CR>
 	autocmd FileType tex nnoremap <leader>f :call FoldColumnToggle()<cr>
 	autocmd FileType tex nnoremap <leader>s :!mupdf $(echo % \| sed 's/tex$/pdf/') & disown<CR><CR>
 	autocmd FileType tex nnoremap <leader>s :!gnome-open $(echo % \| sed 's/tex$/pdf/') & disown<CR><CR>
@@ -392,14 +400,14 @@ hi SignColumn ctermbg=None
 nnoremap <leader>q :call QuickfixToggle()<cr>
 let g:quickfix_is_open = 0
 function! QuickfixToggle()
-    if g:quickfix_is_open
-        cclose
-        let g:quickfix_is_open = 0
-        execute g:quickfix_return_to_window . "wincmd w"
-    else
-        let g:quickfix_return_to_window = winnr()
-        copen
-        let g:quickfix_is_open = 1
-    endif
+	if g:quickfix_is_open
+		cclose
+		let g:quickfix_is_open = 0
+		execute g:quickfix_return_to_window . "wincmd w"
+	else
+		let g:quickfix_return_to_window = winnr()
+		copen
+		let g:quickfix_is_open = 1
+	endif
 endfunction
 "-------------------------------------------------------------------------- }}}
