@@ -14,7 +14,13 @@ I then commented out the lines 158-176 from ~/.vim/bundle/vim-latex-live-preview
 
 ## YouCompleteMe
 
+You need to run a specific [script to finish the installation](https://github.com/ycm-core/YouCompleteMe#linux-64-bit)
+
+	python3 install.py --clang-completer --ts-completer --cs-completer
+
+
 # Mappings
+
 
 ## NERDTree
 

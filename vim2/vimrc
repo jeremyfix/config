@@ -59,6 +59,10 @@ Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 " previewer, run :LLPStartPreview
 " Plugin 'xuhdev/vim-latex-live-preview'
 
+" [Markdown]
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+
 " [Completion]
 Plugin 'ycm-core/YouCompleteMe'
 
@@ -274,6 +278,8 @@ set hlsearch
 set incsearch
 " Let some space around the cursor to see the context
 set scrolloff=20
+" 
+set backspace=indent,eol,start 
 
 " Write the swap file to disk
 " frequently enough; This is usefull for Latex live preview for example
