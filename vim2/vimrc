@@ -284,6 +284,7 @@ let g:updatetime=1000
 " let g:Tex_CompileRule_pdf = 'latexmk $*'
 " let g:livepreview_previewer = 'mupdf'
 " let g:livepreview_engine = 'latexmk -pdf '
+let g:vimtex_view_method='zathura'
 "-------------------------------------------------------------------------- }}}
 
 "" YouCompleteMe ---------------------------------------------------------- {{{
