@@ -147,13 +147,22 @@ let g:UltiSnipsEditSplit="vertical"
 " ------------------------------------------------------------------------- }}}
 
 " Help navigation --------------------------------------------------------- {{{
-autocmd FileType help nnoremap <buffer> <CR> <C-]>
-autocmd FileType help nnoremap <buffer> <BS> <C-T>
-autocmd FileType help nnoremap <buffer> o /'\l\{2,\}'<CR>
-autocmd FileType help nnoremap <buffer> O ?'\l\{2,\}'<CR>
-autocmd FileType help nnoremap <buffer> s /\|\zs\S\+\ze\|<CR>
-autocmd FileType help nnoremap <buffer> S ?\|\zs\S\+\ze\|<CR>
-" -------------------------------------------------------------------------}}}
+
+" jump to links with CR
+autocmd FileType help nmap <buffer> <CR> <C-]>
+" jump back with BS
+autocmd FileType help nmap <buffer> <BS> <C-T>
+" skip to next option link
+autocmd FileType help nmap <buffer> o /'[a-z]\{2,\}'<CR>
+" skip to previous option link
+autocmd FileType help nmap <buffer> O ?'[a-z]\{2,\}'<CR>
+" skip to next subject link
+autocmd FileType help nmap <buffer> s /\|\S\+\|<CR>l
+" skip to previous subject link
+autocmd FileType help nmap <buffer> S h?\|\S\+\|<CR>l
+" quit
+autocmd FileType help nmap <buffer> q :q<CR>
+"---------------------------------------------------------------------------}}}
 
 " Filename completion ----------------------------------------------------- {{{
 " For completing filenames with the longest common part
