@@ -81,7 +81,7 @@ filetype plugin indent on    " required
 let mapleader = ","
 
 " The leader used locally depending on the filemode
-let maplocalleader = "\\"
+let maplocalleader = ";"
 
 " Easily set the working directory to the file
 " currently edited
