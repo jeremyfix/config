@@ -12,6 +12,11 @@ Then raise vim and run :PluginInstall
 
 I then commented out the lines 158-176 from ~/.vim/bundle/vim-latex-live-preview/plugin/latexlivepreview.vim because I was otherwise getting "Compiling the bibliography failed" and anyway, I set up vim-latex-live-preview to use latexmk which is handling the bibliography itself.
 
+For the custom snippets, you just need to copy the directory my-snippets to your .vim directory
+
+	cp my-snippets ~/.vim/ -rf
+
+
 ## YouCompleteMe
 
 You need to run a specific [script to finish the installation](https://github.com/ycm-core/YouCompleteMe#linux-64-bit)
