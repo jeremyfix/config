@@ -8,7 +8,13 @@ Then install Vundle which will be used to handle the plugins
 
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-Then raise vim. It is going to complain, but do not worry too much about it and run :PluginInstall.
+Then raise vim calling it to install the plugins :
+	
+	vim +PluginInstall +qall
+	
+Then start your newly configured vim :
+
+	vim
 
 For the custom snippets, you just need to copy the directory my-snippets to your .vim directory
 
