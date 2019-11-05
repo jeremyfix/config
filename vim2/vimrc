@@ -24,7 +24,14 @@ Plugin 'tmhedberg/simpylfold'
 Plugin 'vim-scripts/indentpython.vim'
 
 " Syntax checker through external tools
-Plugin 'vim-syntastic/syntastic'
+" Plugin 'vim-syntastic/syntastic'
+
+" Asynchronous Lint Engine
+Plugin 'dense-analysis/ale'
+
+" TagsBar
+Plugin 'majutsushi/tagbar'
+
 
 " Plugin that runs Flake8 on the currently opened file with <F7>
 Plugin 'nvie/vim-flake8'
@@ -78,6 +85,26 @@ Bundle 'peaksea'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " --------------------------------------------------------------------------}}}
+
+
+" Ctags --------------------------------------------------------------------{{{
+set tags=tags
+nnoremap <leader>t :tag <c-r><c-w><cr>
+nnoremap <leader>tt :TagbarToggle<cr>
+
+" --------------------------------------------------------------------------}}}
+
+" Windows resize------------------------------------------------------------{{{
+
+nnoremap <up> :resize +2<CR>
+nnoremap <down> :resize -2<CR>
+nnoremap <left> <C-w><
+nnoremap <right> <C-w>>
+
+" --------------------------------------------------------------------------}}}
+
+
+
 
 " Mappings ---------------------------------------------------------------- {{{
 
@@ -204,7 +231,7 @@ endfunction
 " NERDTree ---------------------------------------------------------------- {{{
 
 " Display the NERDTree on the right side
-let g:NERDTreeWinPos = "right"
+let g:NERDTreeWinPos = "left"
 
 " NERDTree File highlighting
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
@@ -253,17 +280,27 @@ set statusline=%<\ %{mode()}\ \|\ %F%=\ %{&fileformat}\ \|\ %{&fileencoding}\ \|
 
 " ------------------------------------------------------------------------- }}}
 
-" Syntastic --------------------------------------------------------------- {{{
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ['flake8']
+" ALE       --------------------------------------------------------------- {{{
 
-" Statusline
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+let g:ale_fixers = {
+            \'python': ['black'],
+            \ 'cpp': ['clang']
+            \}
+
+" ------------------------------------------------------------------------- }}}
+
+
+" Syntastic --------------------------------------------------------------- {{{
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_python_checkers = ['flake8']
+
+" " Statusline
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 " ------------------------------------------------------------------------- }}}
 
 " Syntax highlighting ----------------------------------------------------- {{{
