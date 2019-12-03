@@ -19,7 +19,7 @@ Plugin 'vundlevim/vundle.vim'
 " Python code folding for vim
 " Fold open with zo
 " Fold close with zc
-Plugin 'tmhedberg/simpylfold'
+" Plugin 'tmhedberg/simpylfold'
 
 " [Python] Handles indentation with parenthesis
 " while/for, ... as defined in PEP8
@@ -217,17 +217,17 @@ autocmd FileType help nmap <buffer> q :q<CR>
 
 " Folding SimpylFold ------------------------------------------------------ {{{
 " Keeping the docstring within the fold
-let g:SimpylFold_docstring_preview=1
+" let g:SimpylFold_docstring_preview=1
 
-" Function to enlarge the column showing the folding depth
-nnoremap <leader>f :call FoldColumnToggle()<cr>
-function! FoldColumnToggle()
-	if &foldcolumn
-		setlocal foldcolumn=0
-	else
-		setlocal foldcolumn=4
-	endif
-endfunction
+" " Function to enlarge the column showing the folding depth
+" nnoremap <leader>f :call FoldColumnToggle()<cr>
+" function! FoldColumnToggle()
+" 	if &foldcolumn
+" 		setlocal foldcolumn=0
+" 	else
+" 		setlocal foldcolumn=4
+" 	endif
+" endfunction
 " ------------------------------------------------------------------------- }}}
 
 " NERDTree ---------------------------------------------------------------- {{{
@@ -420,6 +420,9 @@ augroup filetype_md
 	autocmd FileType markdown noremap <leader>s :!mupdf $(echo % \| sed 's/md$/pdf/') & disown<CR><CR>
 augroup END
 " }}}
+
+autocmd InsertLeave,WinEnter * setlocal foldmethod=syntax
+autocmd InsertEnter,WinLeave * setlocal foldmethod=manual
 
 " LateX file settings ---------------------- {{{
 augroup filetype_latex
