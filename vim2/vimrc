@@ -215,6 +215,8 @@ autocmd FileType help nmap <buffer> q :q<CR>
 :set wildmenu
 " -------------------------------------------------------------------------}}}
 
+set nofoldenable    " disable folding"
+
 " Folding SimpylFold ------------------------------------------------------ {{{
 " Keeping the docstring within the fold
 " let g:SimpylFold_docstring_preview=1
