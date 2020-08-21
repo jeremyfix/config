@@ -32,7 +32,7 @@ You need to run a specific [script to finish the installation](https://github.co
 
 ## Text indentation
 
-To wrap the text to fit, say 80 characters wide. You should `:set textwidth 80` and then visually select a block of text and `gq`
+To wrap the text to fit, say 80 characters wide. You should `:set textwidth 80` and then visually select a block of text and `gq`. To word warp the full buffer, go to be beginning of it `gg` and then `gqG`
 
 ## NERDTree
 
