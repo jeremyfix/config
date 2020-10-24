@@ -83,6 +83,9 @@ Plugin 'honza/vim-snippets'
 " The peaksea color scheme
 Bundle 'peaksea'
 
+" Dockerfile
+Plugin 'ekalinin/Dockerfile.vim'
+
 "all of your plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -291,6 +294,17 @@ let g:ale_fixers = {
             \ 'cpp': ['clang']
             \}
 
+" Hack for disabling the warnings of ALE. Indeed with vim-gtk3 the cursor disappears as soon as ALE suggests errors
+function! SilenceWarningAle()
+    let g:ale_echo_cursor=0
+endfunction
+function! EnableWarningAle()
+    let g:ale_echo_cursor=1
+endfunction
+nnoremap \sw :call SilenceWarningAle()<CR>
+nnoremap \ew :call EnableWarningAle()<CR>
+
+
 " ------------------------------------------------------------------------- }}}
 
 
@@ -478,3 +492,4 @@ function! QuickfixToggle()
 	endif
 endfunction
 "-------------------------------------------------------------------------- }}}
+

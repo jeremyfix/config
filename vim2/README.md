@@ -34,6 +34,11 @@ You need to run a specific [script to finish the installation](https://github.co
 
 To wrap the text to fit, say 80 characters wide. You should `:set textwidth 80` and then visually select a block of text and `gq`. To word warp the full buffer, go to be beginning of it `gg` and then `gqG`
 
+## Copy/Paste
+
+- Paste from the system clipboard `"+p`
+- Copy (yank) to the system clipboard `"+y`
+
 ## NERDTree
 
 NERDTree is automatically opened, even if no file is given when starting vim
