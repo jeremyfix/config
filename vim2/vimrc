@@ -37,6 +37,7 @@ Plugin 'majutsushi/tagbar'
 " Pandoc
 Plugin 'vim-pandoc/vim-pandoc'
 Plugin 'vim-pandoc/vim-pandoc-syntax' 
+" let g:pandoc#modules#disables = ['folding']
 
 " Plugin that runs Flake8 on the currently opened file with <F7>
 Plugin 'nvie/vim-flake8'
@@ -73,7 +74,8 @@ Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " [Markdown]
 Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
+" Plugin 'plasticboy/vim-markdown'
+" Plugin 'tpope/vim-markdown'
 
 " [Completion]
 Plugin 'ycm-core/YouCompleteMe'
@@ -494,5 +496,11 @@ function! QuickfixToggle()
 		let g:quickfix_is_open = 1
 	endif
 endfunction
+"-------------------------------------------------------------------------- }}}
+
+" Slide make--------------------------------------------------------------- {{{
+
+nnoremap <localleader>cc :!slidemake make<CR>
+
 "-------------------------------------------------------------------------- }}}
 
