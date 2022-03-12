@@ -6,7 +6,7 @@ filetype off
 
 " Pluggins  --------------------------------------------------------------- {{{
 " set the runtime path to include vundle and initialize
-set rtp+=~/.vim/bundle3/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
 
 " Vundle plugin list section
 " Each time a plugin is added to the list below
@@ -36,6 +36,21 @@ Plugin 'tpope/vim-commentary'
 
 " Add/Remove brackets in pairs
 Plugin 'jiangmiao/auto-pairs'
+
+" Code completition and many more (ALE)
+" Plugin 'dense-analysis/ale'
+
+" Code completion for python
+Plugin 'davidhalter/jedi-vim'
+
+" Code fix with black
+Plugin 'psf/black'
+
+
+" Tag generation
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
+Plugin 'majutsushi/tagbar'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -86,7 +101,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H> 
 
 " Navigate back and forth between the buffers
-nnoremap <C-p> :bprevious<CR>:redraw<CR>:ls<CR>
+" nnoremap <C-p> :bprevious<CR>:redraw<CR>:ls<CR>
 nnoremap <C-n> :bnext<CR>:redraw<CR>:ls<CR>
 " --------------------------------------------------------------------------}}}
 
@@ -129,4 +144,63 @@ let NERDTreeIgnore=['\.o$', '\.pyc', '\~$', '\.swp$']
 
 " Closes VIM if the only remaining window is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" --------------------------------------------------------------------------}}}
+
+" File settings ----------------------------------------------------------- {{{
+
+" Python file settings ---------------------------------------------------- {{{
+augroup filetype_python
+	autocmd!
+	autocmd BufNewFile,BufRead *.py 
+		\ set tabstop=4 
+		\ softtabstop=4 
+		\ shiftwidth=4 
+		\ textwidth=120 
+		\ expandtab  " replace tabs with spaces
+		\ autoindent " 
+		\ fileformat=unix foldlevel=1
+    autocmd FileType python nnoremap <leader>r :!python3 %<CR>
+    autocmd BufWritePre *.py execute ':Black'
+augroup END
+" }}}
+
+" --------------------------------------------------------------------------}}}
+
+" Tags -------------------------------------------------------------------- {{{
+
+" Where to look for tags files
+set tags=./tags;,~/.vimtags
+" Sensible defaults
+let g:easytags_events = ['BufReadPost', 'BufWritePost']
+let g:easytags_async = 1
+let g:easytags_dynamic_files = 2
+let g:easytags_resolve_links = 1
+let g:easytags_suppress_ctags_warning = 1
+
+" Open/close tagbar with ,b
+nmap <silent> <leader>b :TagbarToggle<CR>
+" autocmd BufEnter * nested :call tagbar#autoopen(0)
+
+" --------------------------------------------------------------------------}}}
+
+" Jedi--------------------------------------------------------------------- {{{
+" Disable auto pop on dot. We can still trigger it with Ctrl + space
+let g:jedi#popup_on_dot = 0
+" --------------------------------------------------------------------------}}}
+"
+" ALE --------------------------------------------------------------------- {{{
+
+" let g:ale_linters = {'python': ['flake8']}
+" let g:ale_fixers = {'python': ['black']}
+" " let g:ale_lsp_suggestions = 1
+" let g:ale_fix_on_save = 1
+" " let g:ale_completion_enabled = 1
+" " " Formating options of the linter
+" let g:ale_echo_msg_error_str = 'E'
+" let g:ale_echo_msg_warning_str = 'W'
+" let g:ale_echo_msg_format = '[%linter%] [%severity%] %code: %%s'
+" set omnifunc=ale#completion#OmniFunc
+" call deoplete#custom#option('sources', {
+"             \ '_': ['ale'],
+"             \})
 " --------------------------------------------------------------------------}}}

@@ -2,12 +2,24 @@ Work in progress to refactor a clean vimrc and document it
 
 # Installation
 
+
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle3/Vundle.vim
 	vim +PluginInstall +qall
 
 Then you can start vim
 
 	vim
+
+## Specifics for python
+
+For python code formating, we use [black](https://github.com/psf/black/blob/main/README.md) for formating and flake8 for
+linting. These need to be installed
+
+    python3 -m pip install black flake8 --user
+
+For completion, we use deoplete which requires msgpacl
+
+    python3 -m pip install msgpack --user
 
 # Bindings
 
@@ -26,8 +38,9 @@ For easily reloading a modified vimrc, use  ',sv'
 ## Navigate through the windows, buffers
 
 - ',o' : lists all the buffers (using [bufexplorer](https://github.com/jlanzarotta/bufexplorer) )
-- C-n, C-p : to move to the next or previous buffer in normal mode
+- C-n : to move to the next buffer in normal mode
 - C-j, C-k, C-l, C-h : move to the windows on the left, right, top, bottom
+- C-p : opens [ctrlp.vim](https://github.com/ctrlpvim/ctrlp.vim) for fuzzy search (there you can fuzzy search in files, buffers, mru, ..); press c-f to cycle; In ctrlp, press '?'
 
 ## Help 
 
@@ -37,4 +50,13 @@ You can easily navigate the help :
 - 'q' to close the help window
 - 's', 'S' : to go to the next/previous link
 
+## Programming language specifics
+
+',b' : opens a list of tags (e.g. classes, functions, variables). Produced with ctags/easytags
+
+### Python
+
+- indents, tabs, etc.. should be correctly handled
+- ',r' : evaluates the current buffer with python3
+- 'K' : opens the docstring (thanks to jedi-vim)
 
