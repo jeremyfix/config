@@ -25,6 +25,9 @@ Plugin 'bling/vim-airline'
 " Buffer explorer
 Plugin 'jlanzarotta/bufexplorer'
 
+" NERDTree explorer
+Plugin 'preservim/nerdtree'
+
 " Easy comment block/line, ... with gcc  gcgc, ...
 Plugin 'tpope/vim-commentary'
 
@@ -102,4 +105,22 @@ autocmd FileType help nmap <buffer> s /\|\S\+\|<CR>l:noh<CR>:nohls<CR>
 autocmd FileType help nmap <buffer> S h?\|\S\+\|<CR>l:noh<CR>:nohls<CR>
 " quit
 autocmd FileType help nmap <buffer> q :q<CR>
+" --------------------------------------------------------------------------}}}
+
+
+" NERDTree ---------------------------------------------------------------- {{{
+
+" Show on the left
+let g:NERDTreeWinPos = "left"
+" on startup and the cursor back to the other window
+autocmd vimenter * NERDTree | wincmd p
+
+" Show the hidden files (starting with .)
+let NERDTreeShowHidden = 1
+
+" Do not display temporary files into NERDTree
+let NERDTreeIgnore=['\.o$', '\.pyc', '\~$', '\.swp$']
+
+" Closes VIM if the only remaining window is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " --------------------------------------------------------------------------}}}
