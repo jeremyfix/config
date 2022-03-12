@@ -1,5 +1,14 @@
 Work in progress to refactor a clean vimrc and document it
 
+# Installation
+
+	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle3/Vundle.vim
+	vim +PluginInstall +qall
+
+Then you can start vim
+
+	vim
+
 # Bindings
 
 The leader is ','
@@ -10,10 +19,15 @@ For easily reloading a modified vimrc, use  ',sv'
 
 - ',w' saves a file
 
+## Editing a file
+
+- 'gcc', ... to comment/uncomnet lines/blocks using [vim-commentary](https://github.com/tpope/vim-commentary)
+
 ## Navigate through the windows, buffers
 
-- ',o' : lists all the buffers
-- C-J, C-K, C-L, C-H : move to the windows on the left, right, top, bottom
+- ',o' : lists all the buffers (using [bufexplorer](https://github.com/jlanzarotta/bufexplorer) )
+- C-W, C-X : to move to the next or previous buffer in normal mode
+- C-j, C-k, C-l, C-h : move to the windows on the left, right, top, bottom
 
 ## Help 
 

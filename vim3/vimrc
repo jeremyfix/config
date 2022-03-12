@@ -1,6 +1,36 @@
 set nocompatible
+set encoding=utf-8 " Set default file encoding
 
 filetype off
+
+
+" Pluggins  --------------------------------------------------------------- {{{
+" set the runtime path to include vundle and initialize
+set rtp+=~/.vim/bundle3/Vundle.vim
+
+" Vundle plugin list section
+" Each time a plugin is added to the list below
+" You need to run  :PluginInstall within vim
+call vundle#begin()
+
+" let vundle manage vundle, required
+Plugin 'vundlevim/vundle.vim'
+
+" Color scheme solarized 
+Plugin 'altercation/vim-colors-solarized'
+
+" A nice status bar at the bottom 
+Plugin 'bling/vim-airline'
+
+" Buffer explorer
+Plugin 'jlanzarotta/bufexplorer'
+
+" Easy comment block/line, ... with gcc  gcgc, ...
+Plugin 'tpope/vim-commentary'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+" --------------------------------------------------------------------------}}}
 
 " General settings
 set backspace=indent,eol,start  " Defines what backspace does in insert mode
@@ -14,7 +44,13 @@ set scrolloff=20 " Let some space around the cursor to see the context
 set tabstop=4    " Number of spaces for a Tab
 set shiftwidth=4 " Size of the autoindent
 
-syntax on
+syntax enable
+
+" Color scheme
+set background=dark
+colorscheme solarized
+" If the terminal is not configured with solarized, uncomment the following
+" let g:solarized_termcolors=256
 
 " Mappings ---------------------------------------------------------------- {{{
 " The leader globally used
@@ -40,9 +76,15 @@ nnoremap <C-L> <C-W><C-L>
 "Move to the window on the left
 nnoremap <C-H> <C-W><C-H> 
 
+" Navigate back and forth between the buffers
+nnoremap <C-W> :bprevious<CR> 
+nnoremap <C-X> :bnext<CR> 
+" --------------------------------------------------------------------------}}}
+
 " vimrc ------------------------------------------------------------------- {{{
 " Sourcing vimrc
 nnoremap <leader>sv :source $MYVIMRC<CR>
+" --------------------------------------------------------------------------}}}
 
 
 " Help navigation --------------------------------------------------------- {{{
@@ -60,3 +102,4 @@ autocmd FileType help nmap <buffer> s /\|\S\+\|<CR>l:noh<CR>:nohls<CR>
 autocmd FileType help nmap <buffer> S h?\|\S\+\|<CR>l:noh<CR>:nohls<CR>
 " quit
 autocmd FileType help nmap <buffer> q :q<CR>
+" --------------------------------------------------------------------------}}}
