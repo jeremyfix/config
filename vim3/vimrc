@@ -28,6 +28,9 @@ Plugin 'jlanzarotta/bufexplorer'
 " NERDTree explorer
 Plugin 'preservim/nerdtree'
 
+" CtrlP
+Plugin 'ctrlpvim/ctrlp.vim'
+
 " Easy comment block/line, ... with gcc  gcgc, ...
 Plugin 'tpope/vim-commentary'
 
