@@ -26,7 +26,7 @@ For easily reloading a modified vimrc, use  ',sv'
 ## Navigate through the windows, buffers
 
 - ',o' : lists all the buffers (using [bufexplorer](https://github.com/jlanzarotta/bufexplorer) )
-- C-W, C-X : to move to the next or previous buffer in normal mode
+- C-n, C-p : to move to the next or previous buffer in normal mode
 - C-j, C-k, C-l, C-h : move to the windows on the left, right, top, bottom
 
 ## Help 

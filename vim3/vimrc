@@ -80,8 +80,8 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H> 
 
 " Navigate back and forth between the buffers
-nnoremap <C-W> :bprevious<CR> 
-nnoremap <C-X> :bnext<CR> 
+nnoremap <C-p> :bprevious<CR>:redraw<CR>:ls<CR>
+nnoremap <C-n> :bnext<CR>:redraw<CR>:ls<CR>
 " --------------------------------------------------------------------------}}}
 
 " vimrc ------------------------------------------------------------------- {{{
