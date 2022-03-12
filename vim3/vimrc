@@ -46,6 +46,9 @@ Plugin 'davidhalter/jedi-vim'
 " Code fix with black
 Plugin 'psf/black'
 
+" Code lint with flake8
+Plugin 'nvie/vim-flake8'
+
 
 " Tag generation
 Plugin 'xolox/vim-misc'
@@ -161,6 +164,7 @@ augroup filetype_python
 		\ fileformat=unix foldlevel=1
     autocmd FileType python nnoremap <leader>r :!python3 %<CR>
     autocmd BufWritePre *.py execute ':Black'
+	autocmd BufWritePre *.py call Flake8()
 augroup END
 " }}}
 
@@ -183,9 +187,17 @@ nmap <silent> <leader>b :TagbarToggle<CR>
 
 " --------------------------------------------------------------------------}}}
 
-" Jedi--------------------------------------------------------------------- {{{
+" Python ------------------------------------------------------------------ {{{
+
+" Jedi
 " Disable auto pop on dot. We can still trigger it with Ctrl + space
 let g:jedi#popup_on_dot = 0
+
+" Flake8
+let g:flake8_show_in_gutter=1
+let g:flake8_show_in_file=1
+" call flake8#Flake8UnplaceMarkers()
+
 " --------------------------------------------------------------------------}}}
 "
 " ALE --------------------------------------------------------------------- {{{
