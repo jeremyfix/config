@@ -3,7 +3,7 @@ Work in progress to refactor a clean vimrc and document it
 # Installation
 
 
-	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle3/Vundle.vim
+	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 	vim +PluginInstall +qall
 
 Then you can start vim
