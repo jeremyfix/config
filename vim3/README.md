@@ -21,6 +21,12 @@ For completion, we use deoplete which requires msgpacl
 
     python3 -m pip install msgpack --user
 
+## Specifics for C++/C/ ..
+
+We use clang-format for formating the code, you need to install it 
+
+	sudo apt install -y clang-format
+
 # Bindings
 
 The leader is ','
