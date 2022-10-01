@@ -46,6 +46,9 @@ Plugin 'davidhalter/jedi-vim'
 " Code fix with black
 Plugin 'psf/black'
 
+" Code fix with clang-format
+Plugin 'rhysd/vim-clang-format'
+
 " Code lint with flake8
 Plugin 'nvie/vim-flake8'
 
@@ -177,6 +180,24 @@ augroup filetype_python
 augroup END
 " }}}
 
+" --------------------------------------------------------------------------}}}
+
+" C++ --------------------------------------------------------------------- {{{
+let g:clang_format#style_options = {
+            \ "AccessModifierOffset" : -4,
+            \ "AllowShortIfStatementsOnASingleLine" : "true",
+            \ "AlwaysBreakTemplateDeclarations" : "true",
+			\ "NamespaceIndentation" : "All",
+            \ "Standard" : "C++11"}
+
+" map to <Leader>cf in C++ code
+autocmd FileType c,cc,hpp,hh,h,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+autocmd FileType c,cc,hpp,hh,h,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
+" if you install vim-operator-user
+autocmd FileType c,cc,hpp,hh,h,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
+" Toggle auto formatting:
+nmap <Leader>C :ClangFormatAutoToggle<CR>
+autocmd FileType c,cc,hpp,hh,h,cpp,objc ClangFormatAutoEnable
 " --------------------------------------------------------------------------}}}
 
 " Tags -------------------------------------------------------------------- {{{
