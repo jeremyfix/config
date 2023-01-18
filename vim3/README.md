@@ -2,7 +2,7 @@ Work in progress to refactor a clean vimrc and document it
 
 # Installation
 
-
+	curl -o ~/.vimrc https://raw.githubusercontent.com/jeremyfix/config/master/vim3/vimrc
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 	vim +PluginInstall +qall
 
