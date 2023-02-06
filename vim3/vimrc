@@ -52,6 +52,8 @@ Plugin 'rhysd/vim-clang-format'
 " Code lint with flake8
 Plugin 'nvie/vim-flake8'
 
+" Ansible yml playbooks syntax
+Plugin 'pearofducks/ansible-vim'
 
 " Tag generation
 Plugin 'xolox/vim-misc'
@@ -195,6 +197,11 @@ autocmd FileType c,cc,hpp,hh,h,cpp,objc map <buffer><Leader>x <Plug>(operator-cl
 nmap <Leader>C :ClangFormatAutoToggle<CR>
 autocmd FileType c,cc,hpp,hh,h,cpp,objc ClangFormatAutoEnable
 " --------------------------------------------------------------------------}}}
+
+" YAML -------------------------------------------------------------------- {{{
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+" --------------------------------------------------------------------------}}}
+
 
 " Tags -------------------------------------------------------------------- {{{
 
