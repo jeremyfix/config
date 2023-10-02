@@ -75,6 +75,7 @@ set hlsearch     " Highligh a previous search if any
 set scrolloff=20 " Let some space around the cursor to see the context
 set tabstop=4    " Number of spaces for a Tab
 set shiftwidth=4 " Size of the autoindent
+set tw=80        " Text width
 
 syntax enable
 
