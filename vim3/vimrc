@@ -60,6 +60,9 @@ Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
 Plugin 'majutsushi/tagbar'
 
+" Copilot
+Plugin 'github/copilot.vim'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 " --------------------------------------------------------------------------}}}
@@ -231,7 +234,14 @@ let g:jedi#popup_on_dot = 0
 let g:flake8_show_in_gutter=1
 let g:flake8_show_in_file=1
 " call flake8#Flake8UnplaceMarkers()
+"
+" Copilot ------------------------------------------------------------------ {{{
 
+imap <silent> <C-j> <Plug>(copilot-next)
+imap <silent> <C-k> <Plug>(copilot-previous)
+imap <silent> <C-l> <Plug>(copilot-dismiss)
+"
+"
 " --------------------------------------------------------------------------}}}
 "
 " ALE --------------------------------------------------------------------- {{{
