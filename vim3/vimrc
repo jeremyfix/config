@@ -244,6 +244,22 @@ imap <silent> <C-l> <Plug>(copilot-dismiss)
 "
 " --------------------------------------------------------------------------}}}
 "
+" Spellcheck -------------------------------------------------------------- {{{
+"
+function! ToggleSpellLang()
+    " toggle between en and fr
+    if &spelllang =~# 'en'
+        :set spelllang=fr
+    else
+        :set spelllang=en
+    endif
+endfunction
+" Note: with Byobu, press Shift-F12 to disable byobu function keys capture
+nnoremap <F7> :setlocal spell!<CR> " toggle spell on or off
+nnoremap <F8> :call ToggleSpellLang()<CR> " toggle language
+
+" --------------------------------------------------------------------------}}}
+""
 " ALE --------------------------------------------------------------------- {{{
 
 " let g:ale_linters = {'python': ['flake8']}
