@@ -38,7 +38,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'jiangmiao/auto-pairs'
 
 " Code completition and many more (ALE)
-" Plugin 'dense-analysis/ale'
+Plugin 'dense-analysis/ale'
 
 " Code completion for python
 Plugin 'davidhalter/jedi-vim'
@@ -62,6 +62,11 @@ Plugin 'majutsushi/tagbar'
 
 " Copilot
 Plugin 'github/copilot.vim'
+Plugin 'nvim-lua/plenary.nvim'
+Plugin 'CopilotC-Nvim/CopilotChat.nvim'
+
+
+
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -263,16 +268,24 @@ nnoremap <F8> :call ToggleSpellLang()<CR> " toggle language
 " ALE --------------------------------------------------------------------- {{{
 
 " let g:ale_linters = {'python': ['flake8']}
-" let g:ale_fixers = {'python': ['black']}
-" " let g:ale_lsp_suggestions = 1
-" let g:ale_fix_on_save = 1
+let g:ale_fixers = {'python': ['ruff']}
+let g:ale_lsp_suggestions = 1
+let g:ale_fix_on_save = 1
 " " let g:ale_completion_enabled = 1
 " " " Formating options of the linter
 " let g:ale_echo_msg_error_str = 'E'
 " let g:ale_echo_msg_warning_str = 'W'
-" let g:ale_echo_msg_format = '[%linter%] [%severity%] %code: %%s'
+let g:ale_echo_msg_format = '[%linter%] [%severity%] %code: %%s'
 " set omnifunc=ale#completion#OmniFunc
 " call deoplete#custom#option('sources', {
 "             \ '_': ['ale'],
 "             \})
-" --------------------------------------------------------------------------}}}
+"
+let g:ale_linters = {
+    \ 'python': ['ruff'],
+    \ 'vim': ['vint'],
+    \ 'cpp': ['clang'],
+    \ 'c': ['clang'],
+    \ 'markdown': ['languagetool']
+\}
+"--------------------------------------------------------------------------}}}
