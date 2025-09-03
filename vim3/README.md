@@ -4,11 +4,31 @@ Work in progress to refactor a clean vimrc and document it
 
 	curl -o ~/.vimrc https://raw.githubusercontent.com/jeremyfix/config/master/vim3/vimrc
 	git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-	vim +PluginInstall +qall
+
+	# For ALE
+	mkdir -p ~/.local/share/nvim/site/pack/git-plugins/start       
+	git clone --depth 1 https://github.com/dense-analysis/ale.git
+	~/.local/share/nvim/site/pack/git-plugins/start/ale
+
+	nvim +PluginInstall +qall
 
 Then you can start vim
 
-	vim
+	nvim
+
+## Installing the linters
+
+For languagetool, you must get the command line jar from languagetool, then
+define a script in your $PATH like so :
+
+	#!/bin/bash
+
+	java -jar /path/to/languagetool-commandline.jar "$@"
+
+For ruff :
+
+	snap install ruff
+
 
 ## Specifics for python
 
